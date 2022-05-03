@@ -15,16 +15,7 @@ $(document).ready(function() {
         setOperator(e)
     })
     $(".equal").click(function(){
-        if (operatorRegister == "+") {
-            register += getDisplay()
-        }else if (operatorRegister == "-") {
-            register -= getDisplay()
-        }else if (operatorRegister == "x") {
-            register *= getDisplay()
-        }else if (operatorRegister == "/") {
-            register /= getDisplay()
-        }
-        display(register)
+        calculateResult()
     })
 })
 
@@ -70,16 +61,7 @@ function setOperator(e) {
     if (register == null) {
         register = getDisplay()
     }else if (register != null && operatorElementSelected == null){
-        if (operatorRegister == "+") {
-            register += getDisplay()
-        }else if (operatorRegister == "-") {
-            register -= getDisplay()
-        }else if (operatorRegister == "x") {
-            register *= getDisplay()
-        }else if (operatorRegister == "/") {
-            register /= getDisplay()
-        }
-        display(register)
+        calculateResult()
     }
     operatorRegister = getOperator(e)
     unselectOperator()
@@ -98,4 +80,17 @@ function unselectOperator() {
     $(operatorElementSelected).css("background", "#ff9500")
     $(operatorElementSelected).css("color", "white")
     operatorElementSelected = null
+}
+
+function calculateResult(){
+    if (operatorRegister == "+") {
+        register += getDisplay()
+    }else if (operatorRegister == "-") {
+        register -= getDisplay()
+    }else if (operatorRegister == "x") {
+        register *= getDisplay()
+    }else if (operatorRegister == "/") {
+        register /= getDisplay()
+    }
+    display(register)
 }
